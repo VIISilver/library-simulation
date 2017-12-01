@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import {BrowserRouter, Route} from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import Auth from './components/Auth/Auth';
+import Browsing from './components/Browsing/Browsing';
 
 class App extends Component {
   render() {
     return (
-      <div >
-        <Route component={Auth} path="/" exact />
-      </div>
+      <HashRouter>
+        <div >
+          <Route component={Auth} path="/" exact />
+          <Route component={Browsing} path='/browsing' />
+        </div>
+      </HashRouter>
     );
   }
 }
