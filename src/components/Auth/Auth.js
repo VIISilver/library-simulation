@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Auth extends Component {
     render() {
         return (
             <div >
-                <a href={process.env.REACT_APP_LOGIN}><button><span>Login</span></button></a>
+                <Link to='/browsing'>
+                    <button><span>Login</span></button>
+                </Link>
                 <a href={process.env.REACT_APP_LOGIN}><button><span>Register</span></button></a>
                 <p>Just to show that I can use a paragrah element.</p>
             </div>

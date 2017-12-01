@@ -9,7 +9,6 @@ const Auth0Strategy = require('passport-auth0');
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.json());
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
@@ -46,8 +45,8 @@ passport.use(new Auth0Strategy({
 
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: '/#/profitcomparison',
-    failureRedirect: '/auth'
+    successRedirect: 'http://localhost:3000/#/browsing',
+    failureRedirect: 'http://localhost:3005/auth'
 }))
 
 app.get('/auth/me', (req, res) => {
@@ -59,7 +58,7 @@ app.get('/auth/me', (req, res) => {
 
 app.get('/auth/logout', (req, res) => {
     req.logOut();
-    res.redirect(302, '/#/');
+    res.redirect(302, 'http://localhost:3000/');
 })
 
 passport.serializeUser(function (id, done) {
