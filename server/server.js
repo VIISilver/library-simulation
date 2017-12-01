@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const massive = require('massive');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
+const controller = require('./controllers/controller');
 
 const app = express();
 
@@ -71,6 +72,11 @@ passport.deserializeUser(function (id, done) {
             done(null, user[0])
         })
 })
+
+// Endpoints for Browsing View.
+app.get('/api/books', controller.getBooks);
+app.post('/api/book', controller.addBook);
+app.put('/api/book', controller.editBook);
 
 const PORT = 3005;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}.`));
