@@ -77,6 +77,7 @@ passport.deserializeUser(function (id, done) {
 app.get('/api/books', controller.getBooks);
 app.post('/api/book', controller.addBook);
 app.put('/api/book', controller.editBook);
+app.delete('/api/book/:id', controller.deleteBook);
 
 const PORT = 3005;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}.`));
